@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Snake Game</title>
+</head>
+<body id="body">
+    <h1>Snake Game</h1>
+    <div id="msg">Press space or pause to stop</div>
+        <div id="container">
+            <div id="GameArea">
+            <canvas id="gameBoard" width="600" height="550"></canvas>
+        </div>
+        <div id="scores">
+            <button id="dif">Choose Difficulty level</button>
+            <div id="score">Score:<span id="scoreVal">0</span></div>
+            <div id="High-Score">High-Score:<span id="HighscoreVal">0</span></div>
+        </div>
+    </div>
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pause</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Choose Difficulty Level:</p>
+            <br>
+            <br>
+            <button id="easyBtn">Easy</button>
+            <button id="mediumBtn">Medium</button>
+            <button id="hardBtn">Hard</button>
+        </div>
+    </div>
+    <div id="pauseMyModal" class="pauseModal">
+        <div class="pause-modal-content">Paused<img src="data:image/png;base64,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" alt="Pause Icon">
+        </div>
+    </div>
+    <div id="resumeModal" class="resumeModal">
+        <div class="resume-modal-content">Resuming...</div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
